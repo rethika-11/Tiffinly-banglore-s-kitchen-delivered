@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All restaurants — Tiffinly.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23b0301c'/%3E%3Ctext x='50' y='68' font-size='50' font-family='Georgia,serif' font-weight='700' fill='%23fbf3e7' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">Tiffinly<span class="dot">.</span></a>
+      <nav class="nav-center">
+        <a href="index.html">Home</a>
+        <a href="restaurants.html">All Restaurants</a>
+        <a href="restaurants.html?cuisine=Biryani">Biryani</a>
+        <a href="restaurants.html?cuisine=Desserts">Desserts</a>
+      </nav>
+      <div class="nav-right">
+        <a href="cart.html" class="cart-link">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.6L21 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+          Cart
+          <span data-cart-badge>0</span>
+        </a>
+        <div data-auth-slot></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-bottom: 0;">
+      <div class="container">
+        <p class="eyebrow">Full listing</p>
+        <h1 style="font-size: clamp(1.7rem, 3.2vw, 2.4rem);">Restaurants near you</h1>
+        <form class="search-bar" id="listing-search-form" style="max-width: 480px; margin-top: 22px;">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <input type="text" id="listing-search-input" placeholder="Search restaurants or dishes" />
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <p class="eyebrow">Cuisine</p>
+        <div class="chip-row" id="cuisine-row" style="margin-bottom: 28px;"></div>
+
+        <div class="filter-bar">
+          <label class="veg-toggle">
+            <input type="checkbox" id="veg-only-toggle" />
+            Veg only
+          </label>
+          <span class="results-count" id="results-count"></span>
+          <select id="sort-select">
+            <option value="default">Sort: Recommended</option>
+            <option value="rating-desc">Rating: Highest first</option>
+            <option value="delivery-asc">Delivery time: Fastest</option>
+            <option value="cost-asc">Cost for two: Low to High</option>
+          </select>
+        </div>
+
+        <div class="restaurant-grid" id="restaurant-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Tiffinly. — a demo food delivery app built for a frontend assignment.</span>
+      <span>Auth by Clerk · Placeholder images via picsum.photos</span>
+    </div>
+  </footer>
+
+  <script src="js/restaurants-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/landing.js"></script>
+  <script src="js/listing.js"></script>
+</body>
+</html>

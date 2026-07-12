@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiffinly. — Bengaluru's kitchens, delivered</title>
+  <meta name="description" content="Tiffinly. — order from Bengaluru's best local kitchens. Browse freely, sign in with Google only at checkout." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23b0301c'/%3E%3Ctext x='50' y='68' font-size='50' font-family='Georgia,serif' font-weight='700' fill='%23fbf3e7' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">Tiffinly<span class="dot">.</span></a>
+      <nav class="nav-center">
+        <a href="index.html">Home</a>
+        <a href="restaurants.html">All Restaurants</a>
+        <a href="restaurants.html?cuisine=Biryani">Biryani</a>
+        <a href="restaurants.html?cuisine=Desserts">Desserts</a>
+      </nav>
+      <div class="nav-right">
+        <a href="cart.html" class="cart-link">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.4a2 2 0 002 1.6h8.2a2 2 0 002-1.6L21 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+          Cart
+          <span data-cart-badge>0</span>
+        </a>
+        <div data-auth-slot></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Delivering across Bengaluru</p>
+          <h1 class="hero-title">Bengaluru's kitchens,<br /><span>delivered.</span></h1>
+          <p class="hero-desc">
+            Nine local kitchens, one cart at a time. Search a dish or a cuisine,
+            build your order, and sign in only when you're ready to pay.
+          </p>
+          <form class="search-bar" id="hero-search-form">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <input type="text" id="hero-search-input" placeholder="Search restaurants or dishes — try 'biryani'" />
+          </form>
+          <div class="hero-actions">
+            <div class="btn-moving-border">
+              <span id="hero-search-btn" style="cursor: pointer;">Find food near you →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="https://picsum.photos/seed/tiffinly-biryani-junction/700/525" alt="Biryani Junction" />
+          <div class="hero-card-body">
+            <p class="spec-label">Trending this week</p>
+            <h3>Biryani Junction</h3>
+            <div class="meta">
+              <span>★ 4.4</span>
+              <span>32 min</span>
+              <span>₹350 for two</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cuisines">
+      <div class="container">
+        <p class="eyebrow">Browse by cuisine</p>
+        <div class="chip-row" id="cuisine-row"></div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="container">
+        <div class="section-head">
+          <h2>Popular right now</h2>
+          <a href="restaurants.html" class="btn-link">View all 9 →</a>
+        </div>
+        <div class="restaurant-grid" id="featured-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Tiffinly. — a demo food delivery app built for a frontend assignment.</span>
+      <span>Auth by Clerk · Placeholder images via picsum.photos</span>
+    </div>
+  </footer>
+
+  <script src="js/restaurants-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>

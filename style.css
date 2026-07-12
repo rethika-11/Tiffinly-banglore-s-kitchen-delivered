@@ -1,0 +1,400 @@
+/* ============================================================
+   TIFFINLY. — Food delivery
+   Tokens: warm cream background, espresso-brown text, brick/
+   terracotta accent — a menu-card feel instead of a dark tech
+   theme. Signature element: an animated gradient border
+   (Aceternity "Moving Border" pattern, rebuilt in plain CSS)
+   used on the hero CTA and bestseller badges.
+   ============================================================ */
+
+:root {
+  --bg: #fbf3e7;
+  --surface: #fffdf9;
+  --surface-2: #f3e6d2;
+  --line: rgba(43, 27, 18, 0.1);
+  --line-strong: rgba(43, 27, 18, 0.18);
+  --text: #2b1b12;
+  --text-dim: #6b5849;
+  --text-faint: #a0907f;
+  --accent: #b0301c;
+  --accent-soft: rgba(176, 48, 28, 0.08);
+  --accent-line: rgba(176, 48, 28, 0.35);
+  --veg: #3e8853;
+  --gold: #d99a3d;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --max-w: 1180px;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+
+.container { max-width: var(--max-w); margin-inline: auto; padding-inline: 24px; }
+
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; line-height: 1.15; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.eyebrow::before { content: ""; width: 20px; height: 1px; background: var(--accent); }
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+::selection { background: var(--accent); color: #fff8ee; }
+
+/* ---------------- Buttons ---------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.94rem;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn-primary { background: var(--accent); color: #fff8ee; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(176, 48, 28, 0.22); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-ghost { border-color: var(--line-strong); color: var(--text); }
+.btn-ghost:hover { border-color: var(--accent-line); background: var(--accent-soft); }
+.btn-small { padding: 9px 16px; font-size: 0.85rem; }
+.btn-block { width: 100%; }
+.btn-link { background: none; border: none; color: var(--text-dim); font-size: 0.85rem; text-decoration: underline; }
+.btn-link:hover { color: var(--text); }
+
+/* Signature element: animated gradient border (Aceternity
+   "Moving Border" pattern) — a rotating conic-gradient sits
+   behind the button, masked to a thin ring by padding + the
+   solid surface underneath. */
+.btn-moving-border {
+  position: relative;
+  border-radius: 999px;
+  padding: 2px;
+  background: conic-gradient(from var(--angle, 0deg), var(--accent), var(--gold), var(--accent));
+  animation: rotate-border 3.5s linear infinite;
+}
+.btn-moving-border > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 13px 28px;
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotate-border {
+  to { --angle: 360deg; }
+}
+
+/* ---------------- Navbar ---------------- */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(251, 243, 231, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.navbar .container { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 16px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; gap: 8px; }
+.brand .dot { color: var(--accent); }
+
+.nav-center { display: flex; gap: 30px; font-size: 0.92rem; color: var(--text-dim); }
+.nav-center a:hover { color: var(--text); }
+
+.nav-right { display: flex; align-items: center; gap: 18px; }
+
+.cart-link { position: relative; display: flex; align-items: center; gap: 6px; font-size: 0.9rem; color: var(--text-dim); }
+.cart-link:hover { color: var(--text); }
+.cart-link svg { width: 20px; height: 20px; }
+
+[data-cart-badge] {
+  position: absolute; top: -8px; right: -10px;
+  background: var(--accent); color: #fff8ee;
+  font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700;
+  min-width: 17px; height: 17px; border-radius: 999px;
+  display: none; align-items: center; justify-content: center; padding: 0 4px;
+}
+
+[data-auth-slot] { display: flex; align-items: center; }
+.auth-user { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; }
+.auth-avatar { width: 26px; height: 26px; border-radius: 50%; }
+.auth-dev-note {
+  font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-faint);
+  border: 1px dashed var(--line-strong); padding: 5px 10px; border-radius: 999px;
+}
+
+/* ---------------- Hero (landing) ---------------- */
+
+.hero { padding: 80px 0 60px; border-bottom: 1px solid var(--line); }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.hero-title { font-size: clamp(2.1rem, 4.4vw, 3.2rem); font-weight: 600; }
+.hero-title span { color: var(--accent); font-style: italic; }
+.hero-desc { margin-top: 18px; color: var(--text-dim); max-width: 46ch; font-size: 1.05rem; }
+
+.search-bar {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 14px 18px;
+  max-width: 440px;
+}
+.search-bar svg { width: 18px; height: 18px; color: var(--text-faint); flex-shrink: 0; }
+.search-bar input { border: none; background: none; outline: none; font-size: 0.96rem; color: var(--text); width: 100%; font-family: var(--font-body); }
+
+.hero-actions { margin-top: 26px; }
+
+.hero-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.hero-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.hero-card-body { padding: 20px 22px; }
+.hero-card .spec-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; }
+.hero-card h3 { margin-top: 6px; font-size: 1.15rem; }
+.hero-card .meta { margin-top: 8px; display: flex; gap: 12px; font-size: 0.85rem; color: var(--text-dim); }
+
+/* ---------------- Cuisine chips ---------------- */
+
+.cuisines { padding: 44px 0; border-bottom: 1px solid var(--line); }
+.chip-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.chip {
+  padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line-strong);
+  font-size: 0.88rem; color: var(--text-dim); background: var(--surface);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.chip:hover, .chip.active { border-color: var(--accent-line); color: var(--accent); background: var(--accent-soft); }
+
+/* ---------------- Section heads ---------------- */
+
+section { padding: 56px 0; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+.section-head h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+
+/* ---------------- Restaurant cards ---------------- */
+
+.restaurant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 22px; }
+
+.restaurant-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.restaurant-card:hover { transform: translateY(-3px); border-color: var(--line-strong); box-shadow: 0 14px 30px rgba(43, 27, 18, 0.08); }
+
+.card-image-wrap { position: relative; }
+.card-image-wrap img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
+.badge {
+  position: absolute; top: 12px; left: 12px;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em;
+  background: var(--surface); border: 1px solid var(--line-strong);
+  padding: 4px 10px; border-radius: 999px; display: flex; align-items: center; gap: 5px;
+}
+.veg-dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.veg-dot.veg { background: var(--veg); }
+.veg-dot.nonveg { background: var(--accent); }
+
+.restaurant-card-body { padding: 18px 20px; }
+.restaurant-card h3 { font-size: 1.08rem; }
+.restaurant-card .cuisine-line { color: var(--text-dim); font-size: 0.86rem; margin-top: 4px; }
+.restaurant-card .meta-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 14px; font-size: 0.86rem; color: var(--text-faint);
+}
+.rating-pill { background: var(--veg); color: #fff; font-family: var(--font-mono); font-size: 0.78rem; padding: 2px 8px; border-radius: 6px; }
+
+/* ---------------- Listing filters ---------------- */
+
+.filter-bar {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--line);
+}
+.filter-bar select {
+  background: var(--surface); color: var(--text); border: 1px solid var(--line-strong);
+  border-radius: 8px; padding: 10px 14px; font-size: 0.88rem;
+}
+.results-count { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-faint); }
+.veg-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-dim); }
+
+/* ---------------- Restaurant menu page ---------------- */
+
+.restaurant-header {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+.restaurant-header img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--radius); }
+.restaurant-header h1 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.restaurant-header .cuisine-line { color: var(--text-dim); margin-top: 8px; }
+.restaurant-header .meta-row { margin-top: 18px; display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.92rem; }
+.restaurant-header .meta-row div { display: flex; flex-direction: column; }
+.restaurant-header .meta-row .num { font-family: var(--font-mono); font-weight: 600; font-size: 1.1rem; }
+.restaurant-header .meta-row .label { color: var(--text-faint); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.menu-category { margin-bottom: 12px; }
+.menu-category h2 { font-size: 1.2rem; margin-bottom: 18px; }
+
+.menu-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.menu-item h3 { font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+.menu-item .price { font-family: var(--font-mono); color: var(--text); margin-top: 4px; font-size: 0.92rem; }
+.menu-item p.desc { color: var(--text-dim); font-size: 0.86rem; margin-top: 6px; max-width: 46ch; }
+
+.add-btn {
+  background: var(--surface);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+.add-btn:hover { background: var(--accent-soft); }
+
+.item-qty-stepper {
+  display: flex; align-items: center; border: 1px solid var(--accent-line); border-radius: 8px; overflow: hidden;
+}
+.item-qty-stepper button { background: var(--accent-soft); color: var(--accent); border: none; width: 30px; height: 34px; font-size: 1rem; }
+.item-qty-stepper span { width: 26px; text-align: center; font-family: var(--font-mono); font-size: 0.9rem; }
+
+/* ---------------- Cart page ---------------- */
+
+.cart-layout { display: grid; grid-template-columns: 1.7fr 1fr; gap: 40px; align-items: start; }
+.cart-restaurant-label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.cart-items { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.cart-row { background: var(--surface); padding: 18px 20px; display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center; }
+.cart-row h3 { font-size: 0.96rem; }
+.cart-row .remove { color: var(--text-faint); font-size: 0.78rem; margin-top: 4px; }
+.cart-row .remove:hover { color: var(--accent); }
+.cart-row .line-total { font-family: var(--font-mono); color: var(--accent); font-weight: 600; white-space: nowrap; }
+
+.empty-cart { text-align: center; padding: 70px 0; color: var(--text-dim); }
+.empty-cart .btn { margin-top: 20px; }
+
+.summary-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; position: sticky; top: 100px; }
+.summary-card h3 { font-size: 1.05rem; margin-bottom: 18px; }
+.summary-line { display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.92rem; color: var(--text-dim); border-bottom: 1px solid var(--line); }
+.summary-line.total { color: var(--text); font-weight: 600; font-size: 1.05rem; border-bottom: none; padding-top: 16px; }
+.summary-line span:last-child { font-family: var(--font-mono); }
+
+/* ---------------- Checkout ---------------- */
+
+.checkout-gate {
+  max-width: 480px; margin: 40px auto; text-align: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 48px 36px;
+}
+.checkout-gate .lock-icon {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+.checkout-gate h2 { font-size: 1.4rem; }
+.checkout-gate p { color: var(--text-dim); margin-top: 12px; }
+.checkout-gate .btn, .checkout-gate .btn-moving-border { margin-top: 26px; }
+
+.checkout-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+.checkout-form { display: flex; flex-direction: column; gap: 14px; }
+.checkout-form label { font-size: 0.8rem; color: var(--text-faint); font-family: var(--font-mono); margin-bottom: -6px; }
+.checkout-form input { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 10px; padding: 13px 16px; color: var(--text); font-size: 0.94rem; }
+.checkout-form input:focus { outline: none; border-color: var(--accent); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.payment-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.payment-option {
+  display: flex; align-items: center; gap: 8px;
+  border: 1px solid var(--line-strong); border-radius: 10px; padding: 11px 16px; font-size: 0.88rem; cursor: pointer;
+}
+.payment-option input { accent-color: var(--accent); }
+.payment-option.selected { border-color: var(--accent-line); background: var(--accent-soft); }
+
+.order-confirmation { max-width: 520px; margin: 30px auto; text-align: center; padding: 20px 0; }
+.order-confirmation .check {
+  width: 64px; height: 64px; border-radius: 50%; background: rgba(62, 136, 83, 0.14);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+.order-confirmation h2 { font-size: 1.6rem; }
+.order-confirmation p { color: var(--text-dim); margin-top: 10px; }
+.order-id { font-family: var(--font-mono); color: var(--accent); margin-top: 16px; font-size: 1.05rem; }
+.eta { margin-top: 6px; color: var(--text-dim); font-size: 0.92rem; }
+
+/* ---------------- Footer ---------------- */
+
+footer { padding: 40px 0; border-top: 1px solid var(--line); }
+footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: var(--text-faint); }
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 900px) {
+  .hero-grid, .cart-layout, .checkout-layout, .restaurant-header { grid-template-columns: 1fr; }
+  .nav-center { display: none; }
+  .summary-card { position: static; }
+}
+
+@media (max-width: 560px) {
+  section { padding: 40px 0; }
+  .menu-item { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .cart-row { grid-template-columns: 1fr; }
+}
