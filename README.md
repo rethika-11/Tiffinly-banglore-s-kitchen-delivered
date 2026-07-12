@@ -2,7 +2,12 @@
 
 A Bengaluru-themed food delivery app — browse and cart freely, checkout gated behind Google sign-in via Clerk. Built by hand with HTML, CSS and vanilla JS.
 
-**Live demo:** `https://rethika-11.github.io/food-delivery-app` _(update once deployed)_
+**Live demo:** https://rethika-11.github.io/Tiffinly-banglore-s-kitchen-delivered/ 
+repo:https://github.com/rethika-11/Tiffinly-banglore-s-kitchen-delivered
+###Screen shot
+###Home Page
+![Home page](ti.w.png)
+![Product pages](ti.m.jpeg)
 
 ## Features
 
