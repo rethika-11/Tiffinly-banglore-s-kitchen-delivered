@@ -1,6 +1,6 @@
 # Tiffinly. — Food Delivery App
 
-A Bengaluru-themed food delivery app — browse and cart freely, checkout gated behind Google sign-in via Clerk. Built by hand with HTML, CSS and vanilla JS.
+A Bengaluru-themed food delivery app — browse and cart freely, checkout gated behind Google sign-in via Clerk. Built by hand with HTML, CSS and vanilla JS.With the help of claude code.
 
 **Live demo:** https://rethika-11.github.io/Tiffinly-banglore-s-kitchen-delivered/ 
 repo:https://github.com/rethika-11/Tiffinly-banglore-s-kitchen-delivered
